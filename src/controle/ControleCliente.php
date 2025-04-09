@@ -1,4 +1,7 @@
 <?php
+
+namespace App\controle;
+use App\modelo\Cliente;
 class ControleCliente
 {
 
