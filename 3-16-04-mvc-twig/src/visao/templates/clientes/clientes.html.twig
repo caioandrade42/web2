@@ -1,0 +1,12 @@
+{% extends "base.html.twig" %}
+
+{% block cabecalho %}
+
+<h3>Listagem de clientes</h3>
+{% endblock %}
+
+{% block principal %}
+{% for cli in clientes %}
+    <p>{{ cli.nome }}</p>
+{% endfor %}
+{% endblock %}
