@@ -9,14 +9,14 @@ class ControleCliente
     {
         $nome = 'Teste da Silva';
         $cliente = new Cliente($nome);
-        $cliente->save();
+        $cliente->save($nome);
         echo "Cliente cadastrado com sucesso: " . $cliente->getNome() . "<br>";
     }
     public function listar()
     {
+        $cliente = new Cliente();
         echo '<pre>';
-        print_r(Cliente::list());
+        print_r($cliente->list());
         echo '</pre>';
-
     }
 }
