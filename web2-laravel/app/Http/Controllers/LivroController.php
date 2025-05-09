@@ -99,10 +99,10 @@ class LivroController extends Controller
         }
     }
 
-    public funtion atualizarLivro(Request $request){
-        try{
-
-        }
-    }
+//    public funtion atualizarLivro(Request $request){
+//        try{
+//
+//        }
+//    }
 
 }
