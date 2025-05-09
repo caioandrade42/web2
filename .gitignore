@@ -2,3 +2,4 @@ src/vendor/*
 
 web2-laravel/vendor
 web2-laravel/node_modules
+.idea/*
