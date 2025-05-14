@@ -1,0 +1,22 @@
+### CADASTRAR USUARIO
+POST http://localhost:8000/users/cadastrar
+Accept: Aplication/json
+Content-Type: Aplication/json
+App-Key: fL8Fc6Hxfz/7F52gW9KYmUvHI+lRJ/1VLiCJyzqwccM=
+
+{
+    "name": "Nome do usuario",
+    "email": "email@mail.com",
+    "password": "senha",
+}
+
+### LOGIN USUARIO
+POST http://127.0.0.1:8000/users/login
+Accept: Aplication/json
+Content-Type: Aplication/json
+App-Key: fL8Fc6Hxfz/7F52gW9KYmUvHI+lRJ/1VLiCJyzqwccM=
+
+{
+    "email": "test@example.com",
+    "password": 123456
+}
