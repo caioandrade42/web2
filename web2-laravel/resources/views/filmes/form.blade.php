@@ -1,5 +1,5 @@
 <x-layout>
-
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
     <x-slot:titulo>Novo Filme</x-slot:titulo>
 
     <form method="POST" action="/filmes/{{isset($filme) ? 'atualizar' : 'criar'}}">

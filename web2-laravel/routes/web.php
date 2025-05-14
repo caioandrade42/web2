@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\LivroController;
-
+use App\Http\Controllers\FilmeController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -12,7 +12,7 @@ Route::get('/', function () {
 
 });
 
-Route::prefix('/livros', )->middleware('auth')->group(function () {
+Route::prefix('/livros', )->group(function () {
     Route::post('/criar', [LivroController::class, 'armazenarLivro']);
     Route::get('/criar', [LivroController::class, 'criarLivro']);
     Route::get('/', [LivroController::class, 'exibirLivros']);
