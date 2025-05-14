@@ -1,3 +1,4 @@
+@vite(['resources/css/app.css', 'resources/js/app.js'])
 <nav>
     <div>
         <h2>Livros e Filmes</h2>

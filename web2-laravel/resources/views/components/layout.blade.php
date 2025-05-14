@@ -9,7 +9,7 @@
     <meta charset="UTF-8">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
     <title>Prática Laravel</title>
 
 </head>
@@ -20,18 +20,18 @@
 
 <header>
 
-    <h1>Prática Laravel</h1>
+    <h1><a href="/" style="text-decoration: none;"> Prática Laravel</a></h1>
 
-    @include ('components.menu')
 
-    <h3>{{ $titulo }}</h3>
+
+    <h2>{{ $titulo }}</h2>
 
 </header>
 
 <main>
 
     {{ $slot }}
-
+    @include ('components.menu')
 </main>
 
 <footer>

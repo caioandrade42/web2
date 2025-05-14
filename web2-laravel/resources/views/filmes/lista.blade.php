@@ -3,7 +3,7 @@
     <x-slot:titulo>Filmes</x-slot:titulo>
 
 
-
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
     @session('success')
 
     {{ session('success') }}
@@ -31,6 +31,8 @@
                 <th>Duracao</th>
 
                 <th>Ano de Lancamento</th>
+
+                <th>Acoes</th>
 
             </tr>
 
