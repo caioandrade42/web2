@@ -19,14 +19,16 @@ Route::prefix('/livros', )->group(function () {
 });
 
 Route::prefix('/users')->group(function () {
-    route::post('/cadastrar', [UserController::class, 'cadastrarUser']);
+    route::post('/cadastrar', [UserController::class, 'cadastrarUsuario']);
     route::post('/login', [UserController::class, 'login']);
     route::get('/logout', [UserController::class, 'logout'])->middleware('auth');
 });
 
 Route::get('/filmes', [FilmeController::class, 'exibirFilmes']);
-Route::get('/filmes/criar', [FilmeController::class, 'criarFilme']);
-Route::post('/filmes/criar', [FilmeController::class, 'armazenarFilme']);
-Route::post('/filmes/editar', [FilmeController::class, 'editarFilme']);
-Route::post('/filmes/atualizar', [FilmeController::class, 'atualizarFilme']);
-Route::post('/filmes/excluir', [FilmeController::class, 'excluirFilme']);
+Route::prefix('/filmes')->middleware('auth')->group(function () {
+    Route::get('/filmes/criar', [FilmeController::class, 'criarFilme']);
+    Route::post('/filmes/criar', [FilmeController::class, 'armazenarFilme']);
+    Route::post('/filmes/editar', [FilmeController::class, 'editarFilme']);
+    Route::post('/filmes/atualizar', [FilmeController::class, 'atualizarFilme']);
+    Route::post('/filmes/excluir', [FilmeController::class, 'excluirFilme']);
+});
