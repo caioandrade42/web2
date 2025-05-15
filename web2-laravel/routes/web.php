@@ -19,6 +19,7 @@ Route::prefix('/livros', )->group(function () {
 });
 
 route::post('/login', [UserController::class, 'login']);
+route::get('login', [UserController::class, 'formLogin']);
 Route::prefix('/users')->group(function () {
     route::post('/cadastrar', [UserController::class, 'cadastrarUsuario']);
     route::get('/cadastrar', [UserController::class, 'formCadastrarUsuario']);

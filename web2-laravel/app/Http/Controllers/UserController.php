@@ -14,6 +14,11 @@ class UserController extends Controller
     public function formCadastrarUsuario(){
         return view('users.form');
     }
+
+    public function formLogin(){
+        return view('users.login');
+    }
+
     public function cadastrarUsuario(Request $request){
         try {
             $validator = Validator::make($request->all(), [
