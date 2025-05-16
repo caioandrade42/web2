@@ -20,11 +20,13 @@
 
 <header>
 
-    <h1><a href="/" style="text-decoration: none;"> Prática Laravel</a></h1>
-
-
-
-    <h2>{{ $titulo }}</h2>
+    <nav style="display: flex; align-items: center; justify-content: space-between; padding: 0 1rem;">
+        <h1 style="margin: 0;">
+            <a href="/" style="text-decoration: none;">Prática Laravel</a>
+        </h1>
+        <span style="font-size: 1.2rem;">{{ $titulo }}</span>
+        <button id="logout">Encerrar sessao</button>
+    </nav>
 
 </header>
 
@@ -37,7 +39,7 @@
 <footer>
 
     <p>&copy; DEW II 2025.</p>
-
+    <script src="../../js/logout.js" ></script>
 </footer>
 
 </body>
@@ -45,3 +47,4 @@
 
 
 </html>
+
