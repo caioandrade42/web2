@@ -6,6 +6,7 @@
         <ul>
 
             <li><a href="/users/cadastrar">Cadastro de Usuarios</a></li>
+            <li><a href="/login">Acesse a sua conta</a></li>
             <li><a href="/filmes">Lista de Filmes</a></li>
             <li><a href="/filmes/criar">Novo Filme</a></li>
             <li><a href="/filmes/atualizar">Atualizar Filme</a></li>

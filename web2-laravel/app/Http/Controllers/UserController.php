@@ -22,10 +22,10 @@ class UserController extends Controller
     public function cadastrarUsuario(Request $request){
         try {
             $validator = Validator::make($request->all(), [
-                'nome' => 'required|string|max:255',
+                'name' => 'required|string|max:255',
                 'email' => 'required|email|unique:users,email',
                 'data_nascimento' => 'required|date:Y-m-d',
-                'password' => 'required|string|min:8|confirmed',
+                'password' => 'required|string|min:6',
             ]);
             if ($validator->fails()) {
                 Log::error('UserController::cadastrarUsuario::validator '.$validator->errors());
@@ -33,7 +33,7 @@ class UserController extends Controller
             }
             $user = new User();
             $user->create([
-                'name' => $request->nome,
+                'name' => $request->name,
                 'email' => $request->email,
                 'data_nascimento' => $request->data_nascimento,
                 'password' => bcrypt($request->password),
