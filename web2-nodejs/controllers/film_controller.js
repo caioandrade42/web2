@@ -1,7 +1,7 @@
 import Film from '../module/film.js';
 
 
-await function createFilm(req, res){
+async function createFilm(req, res){
   const film = await Film.create({
     title: req.body.title,
     description: req.body.description,
@@ -14,3 +14,5 @@ async function getAllFilms(req, res){
   const films = await Film.findAll();
   res.json(films);
 }
+
+export {createFilm, getAllFilms};
