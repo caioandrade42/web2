@@ -38,6 +38,7 @@ class UserController extends Controller
                 'data_nascimento' => $request->data_nascimento,
                 'password' => bcrypt($request->password),
             ]);
+            return redirect('/')->with('success', 'Usuário criado com sucesso!');
         }catch (\Exception $e){
             Log::error('UserController::cadastrarUsuario '.$e->getMessage());
             return redirect('/users/cadastrar')->with('error', 'Erro ao criar usuário.');
@@ -56,10 +57,10 @@ class UserController extends Controller
             }
             Auth::attempt($request->only('email', 'password'));
             $request->session()->regenerate();
-            return response()->json(['usuario logado com sucesso',200]);
+            return view('filmes.lista');
         }catch (\Exception $e){
             Log::error('UserController::login '.$e->getMessage());
-            return response()->json(['erro ao acessar o sistema',401]);
+            return redirect('/')->with('error', 'Erro ao acessar o sistema');
         }
     }
 
@@ -70,7 +71,7 @@ class UserController extends Controller
             return redirect('/');
         }catch (\Exception $e){
             Log::error('UserController::logout '.$e->getMessage());
-            return response()->json(['erro ao acessar o sistema',401]);
+            return redirect('/')->with('error', 'Erro ao acessar o sistema');
         }
     }
 }

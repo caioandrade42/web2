@@ -25,7 +25,6 @@
             <a href="/" style="text-decoration: none;">Prática Laravel</a>
         </h1>
         <span style="font-size: 1.2rem;">{{ $titulo }}</span>
-        <button id="logout">Encerrar sessao</button>
     </nav>
 
 </header>
@@ -39,7 +38,6 @@
 <footer>
 
     <p>&copy; DEW II 2025.</p>
-    <script src="../../js/logout.js" ></script>
 </footer>
 
 </body>
