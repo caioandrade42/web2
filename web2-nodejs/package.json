@@ -1,7 +1,7 @@
 {
   "name": "web2-nodejs",
   "version": "1.0.0",
-  "description": "aula de sexta",
+  "description": "aula de nodejs",
   "main": "app.js",
   "type": "module",
   "scripts": {

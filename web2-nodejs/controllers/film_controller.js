@@ -1,18 +1,17 @@
-import Film from '../module/film.js';
+import Film from "../module/film.js";
 
-
-async function createFilm(req, res){
+async function createFilm(req, res) {
   const film = await Film.create({
     title: req.body.title,
     description: req.body.description,
-    release_date: req.body.release_date,
+    year: req.body.year,
   });
-  res.json();
+  res.json(film);
 }
 
-async function getAllFilms(req, res){
-  const films = await Film.findAll();
-  res.json(films);
+async function listFilm(req, res) {
+  const list = await Film.findAll();
+  res.json(list);
 }
 
-export {createFilm, getAllFilms};
+export { createFilm, listFilm };
