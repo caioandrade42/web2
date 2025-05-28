@@ -1,5 +1,5 @@
 import express from "express";
-import film_router from "./routes/film_router.js";
+import film_router from "./routers/film_router.js";
 // import sequelize from "./database/mysql.js";
 // sequelize.authenticate();
 
