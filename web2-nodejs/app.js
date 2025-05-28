@@ -1,15 +1,33 @@
-import getCidades from "./funcoes.js";
-const dados = await getCidades("MG");
-console.log(dados);
+import express from "express";
+import film_router from "./routes/film_router.js";
+// import sequelize from "./database/mysql.js";
+// sequelize.authenticate();
 
-// server.mjs
-import { createServer } from 'node:http';
-const server = createServer((req, res) => {
-    res.writeHead(200, { 'Content-Type': 'aplication/json' });
-    res.end('Hello World!\n');
+const app = express();
+app.use(express.json());
+
+
+// app.use((req,res,next) => {
+//     console.log('F1');
+//     next();
+// });
+
+// app.use((req,res,next) => {
+//     console.log('F2');
+//     next();
+// });
+
+// app.use((req,res,next) => {
+//     console.log('F3');
+//     next();
+// });
+
+app.get("/", (req, res) => {
+    res.end('Rodando.');
 });
-// starts a simple http server locally on port 3000
-server.listen(3000, '127.0.0.1', () => {
-    console.log('Listening on 127.0.0.1:3000');
+
+app.use('/films', film_router);
+
+app.listen(80, ()=>{
+    console.log('Escutando.');
 });
-// run with `node server.mjs`
