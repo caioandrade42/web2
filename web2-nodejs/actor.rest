@@ -1,0 +1,24 @@
+### Get atores
+GET http://localhost/actors
+Accept: */*
+Content-Type: application/json
+
+### Inserir ator
+POST http://localhost/actors
+Accept: */*
+Content-Type: application/json
+
+{
+    "nome": "John Doe",
+    "datanasc": 30
+}
+
+### Atualizar ator
+PUT http://localhost/actors/1
+Accept: */*
+Content-Type: application/json
+
+{
+    "nome": "Jane Doe",
+    "datanasc": 25
+}
