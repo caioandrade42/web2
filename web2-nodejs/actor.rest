@@ -1,11 +1,11 @@
 ### Get atores
 GET http://localhost/actors
-Accept: */*
+Accept: application/json
 Content-Type: application/json
 
 ### Inserir ator
 POST http://localhost/actors
-Accept: */*
+Accept: application/json
 Content-Type: application/json
 
 {
@@ -15,7 +15,7 @@ Content-Type: application/json
 
 ### Atualizar ator
 PUT http://localhost/actors/1
-Accept: */*
+Accept: application/json
 Content-Type: application/json
 
 {

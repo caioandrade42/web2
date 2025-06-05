@@ -3,6 +3,7 @@ import film_router from "./routers/film_router.js";
 import actor_router from "./routers/actor_router.js";
 import director_router from "./routers/director_router.js";
 import syncer from './database/syncer.js';
+import cachorro_router from "./routers/cachorro_router.js";
 // import sequelize from "./database/mysql.js";
 // sequelize.authenticate();
 
@@ -21,7 +22,7 @@ app.get("/", (req, res) => {
 app.use('/films', film_router);
 app.use('/actors', actor_router);
 app.use('/directors', director_router);
-
-app.listen(80, ()=>{
+app.use('/cachorros', cachorro_router);
+app.listen(3000, ()=>{
     console.log('Escutando.');
 });
