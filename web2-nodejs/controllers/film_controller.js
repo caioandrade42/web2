@@ -1,4 +1,4 @@
-import Film from "../module/film.js";
+import {Film, Director }from "../module/director_film.js";
 
 async function createFilm(req, res) {
     const film = await Film.create({
@@ -30,6 +30,33 @@ async function deletaFilm(req,res) {
     const film = await Film.findOne({where: {id: req.body.id}});
     await film.destroy();
     res.json({mesage: 'Deletado com sucesso.'})
+}
+
+export async function associarFilmeDiretor(req, res) {
+    try {
+        const { id } = req.params;
+        const { directorId } = req.body;
+
+        const film = await Film.findByPk(id);
+        if (!film) {
+            return res.status(404).json({ message: 'Filme não encontrado' });
+        }
+
+        const director = await Director.findByPk(directorId);
+        if (!director) {
+            return res.status(404).json({ message: 'Diretor não encontrado' });
+        }
+
+        await film.update({ directorId });
+
+        const filmAtualizado = await Film.findByPk(id, {
+            include: Director
+        });
+
+        return res.status(200).json(filmAtualizado);
+    } catch (error) {
+        return res.status(500).json({ error: error.message });
+    }
 }
 
 export { createFilm, listFilm, editFilm, deletaFilm};
