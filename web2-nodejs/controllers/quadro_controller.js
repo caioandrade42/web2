@@ -1,4 +1,4 @@
-import Quadro from '../module/quadro.js';
+import {Quadro, Pessoa} from '../module/quadro_pessoa.js';
 import sequelize from '../database/mysql.js';
 import { Op } from 'sequelize';
 
@@ -27,7 +27,11 @@ export async function criarQuadro(req, res) {
 
 export async function listarQuadros(req, res) {
     try {
-        const quadros = await Quadro.findAll();
+        const quadros = await Quadro.findAll({include: {
+            model: Pessoa,
+            as: 'pintor',
+            attributes: ['id', 'nome']
+            }});
         return res.status(200).json(quadros);
     } catch (error) {
         return res.status(500).json({ error: error.message });

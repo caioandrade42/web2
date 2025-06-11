@@ -11,7 +11,7 @@ function syncer(){
     Director.hasMany(Film);
     Film.belongsToMany(Actor, {through: 'Film_Director'});
     Actor.belongsToMany(Film, {through: 'Film_Actor'});
-    sequelize.sync({force: true});
+    sequelize.sync();
   } catch (error) {
     console.error('Unable to connect to the database:', error);
     return false;
