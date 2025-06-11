@@ -5,7 +5,7 @@ import { Op } from 'sequelize';
 export async function criarQuadro(req, res) {
     const transaction = await sequelize.transaction();
     try {
-        const { titulo, pessoaId, ano, valor } = req.body;
+        const { titulo,  ano, valor } = req.body;
 
         if (!titulo || !ano || valor === undefined) {
             return res.status(400).json({ message: 'Título, ano e valor são obrigatórios' });
@@ -13,7 +13,6 @@ export async function criarQuadro(req, res) {
 
         const quadro = await Quadro.create({
             titulo,
-            pessoaId,
             ano,
             valor
         }, { transaction });
@@ -102,6 +101,7 @@ export async function excluirQuadro(req, res) {
 export async function associarQuadroPessoa(req, res) {
     const transaction = await sequelize.transaction();
     try {
+        const body = req.body;
         const { quadroId, pessoaId } = req.body;
 
         if (!quadroId || !pessoaId) {

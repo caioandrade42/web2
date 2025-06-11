@@ -50,7 +50,7 @@ export async function associarCachorro(req, res) {
         }
 
         await sequelize.query(
-            'INSERT INTO PessoaCachorro (PessoaId, CachorroId) VALUES (?, ?)',
+            'INSERT INTO PessoaCachorro (PessoaId, CachorroId, createdAt,updatedAt) VALUES (?, ?, NOW(), NOW())',
             {
                 replacements: [pessoaId, cachorroId],
                 transaction

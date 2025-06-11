@@ -4,15 +4,15 @@ import { addPessoa, getAllPessoas, getPessoaById, associarCachorro } from '../co
 const pessoa_router = express.Router();
 
 
-pessoa_router.post('/pessoas', addPessoa);
+pessoa_router.post('/', addPessoa);
 
 
-pessoa_router.get('/pessoas', getAllPessoas);
+pessoa_router.get('/', getAllPessoas);
 
 
-pessoa_router.get('/pessoas/:id', getPessoaById);
+pessoa_router.get('/:id', getPessoaById);
 
 
-pessoa_router.post('/pessoas/associar-cachorro', associarCachorro);
+pessoa_router.post('/associar-cachorro', associarCachorro);
 
 export default pessoa_router;

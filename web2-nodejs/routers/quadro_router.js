@@ -11,11 +11,11 @@ import {
 const quadro_router = express.Router();
 
 
-quadro_router.post('/quadros', criarQuadro);
-quadro_router.get('/quadros', listarQuadros);
-quadro_router.get('/quadros/:id', buscarQuadroPorId);
-quadro_router.put('/quadros/:id', atualizarQuadro);
-quadro_router.delete('/quadros/:id', excluirQuadro);
-quadro_router.put('/quadros/associar' , associarQuadroPessoa)
+quadro_router.post('/', criarQuadro);
+quadro_router.get('/', listarQuadros);
+quadro_router.get('/:id', buscarQuadroPorId);
+quadro_router.put('/atualizar/:id', atualizarQuadro);
+quadro_router.delete('/:id', excluirQuadro);
+quadro_router.put('/associar' , associarQuadroPessoa)
 
 export default quadro_router;
