@@ -5,8 +5,7 @@ import {
     buscarQuadroPorId,
     atualizarQuadro,
     excluirQuadro,
-    buscarQuadrosPorPessoa,
-    buscarQuadrosPorFiltro
+    associarQuadroPessoa
 } from '../controllers/quadro_controller.js';
 
 const quadro_router = express.Router();
@@ -17,8 +16,6 @@ quadro_router.get('/quadros', listarQuadros);
 quadro_router.get('/quadros/:id', buscarQuadroPorId);
 quadro_router.put('/quadros/:id', atualizarQuadro);
 quadro_router.delete('/quadros/:id', excluirQuadro);
-
-quadro_router.get('/quadros/pessoa/:pessoaId', buscarQuadrosPorPessoa);
-quadro_router.get('/quadros/filtro', buscarQuadrosPorFiltro);
+quadro_router.put('/quadros/associar' , associarQuadroPessoa)
 
 export default quadro_router;

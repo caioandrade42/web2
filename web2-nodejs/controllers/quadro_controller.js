@@ -99,46 +99,27 @@ export async function excluirQuadro(req, res) {
     }
 }
 
-export async function buscarQuadrosPorPessoa(req, res) {
+export async function associarQuadroPessoa(req, res) {
+    const transaction = await sequelize.transaction();
     try {
-        const { pessoaId } = req.params;
+        const { quadroId, pessoaId } = req.body;
 
-        const quadros = await Quadro.findAll({
-            where: { pessoaId }
-        });
+        if (!quadroId || !pessoaId) {
+            return res.status(400).json({ message: 'ID do quadro e ID da pessoa são obrigatórios' });
+        }
 
-        return res.status(200).json(quadros);
+        const quadro = await Quadro.findByPk(quadroId);
+        if (!quadro) {
+            await transaction.rollback();
+            return res.status(404).json({ message: 'Quadro não encontrado' });
+        }
+
+        await quadro.update({ pessoaId }, { transaction });
+
+        await transaction.commit();
+        return res.status(200).json(quadro);
     } catch (error) {
-        return res.status(500).json({ error: error.message });
-    }
-}
-
-export async function buscarQuadrosPorFiltro(req, res) {
-    try {
-        const { titulo, anoMin, anoMax, valorMin, valorMax } = req.query;
-
-        const filtro = {};
-
-        if (titulo) {
-            filtro.titulo = { [Op.like]: `%${titulo}%` };
-        }
-
-        if (anoMin || anoMax) {
-            filtro.ano = {};
-            if (anoMin) filtro.ano[Op.gte] = parseInt(anoMin);
-            if (anoMax) filtro.ano[Op.lte] = parseInt(anoMax);
-        }
-
-        if (valorMin || valorMax) {
-            filtro.valor = {};
-            if (valorMin) filtro.valor[Op.gte] = parseFloat(valorMin);
-            if (valorMax) filtro.valor[Op.lte] = parseFloat(valorMax);
-        }
-
-        const quadros = await Quadro.findAll({ where: filtro });
-
-        return res.status(200).json(quadros);
-    } catch (error) {
+        await transaction.rollback();
         return res.status(500).json({ error: error.message });
     }
 }
