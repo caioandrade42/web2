@@ -4,6 +4,9 @@ import actor_router from "./routers/actor_router.js";
 import director_router from "./routers/director_router.js";
 import syncer from './database/syncer.js';
 import cachorro_router from "./routers/cachorro_router.js";
+import pessoa_router from './routers/pessoa_router.js';
+import quadro_router from './routers/quadro_router.js';
+
 // import sequelize from "./database/mysql.js";
 // sequelize.authenticate();
 
@@ -23,6 +26,8 @@ app.use('/films', film_router);
 app.use('/actors', actor_router);
 app.use('/directors', director_router);
 app.use('/cachorros', cachorro_router);
+app.use('/pessoas', pessoa_router);
+app.use('/quadros' , quadro_router);
 app.listen(3000, ()=>{
     console.log('Escutando.');
 });

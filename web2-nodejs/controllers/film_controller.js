@@ -1,4 +1,4 @@
-import Film from "../module/film.js";
+import Film from '../module/film.js';
 
 async function createFilm(req, res) {
     const film = await Film.create({
