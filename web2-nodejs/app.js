@@ -1,4 +1,5 @@
 import express from "express";
+import { create } from "express-handlebars";
 import film_router from "./routers/film_router.js";
 import actor_router from "./routers/actor_router.js";
 import director_router from "./routers/director_router.js";
@@ -15,11 +16,17 @@ if (!syncer) {
 }
 
 const app = express();
+const hbs = create({
+    extname: '.handlebars',
+    defaultLayout: 'main',
+    layoutsDir: './views/layouts/',
+    partialsDir: './views/partials/'
+});
 app.use(express.json());
 
 
 app.get("/", (req, res) => {
-    res.end('Rodando.');
+    res.render('home');
 });
 
 app.use('/films', film_router);

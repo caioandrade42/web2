@@ -1,0 +1,45 @@
+<h1>Pessoas</h1>
+
+<form action="/pessoas/{{#if action}}save{{else}}create{{/if}}" method="post">
+    <input type="hidden" name="id" value="{{pessoa_editing.id}}">
+    <label for="nome">Nome</label>
+    <input type="text" id="nome" name="nome" value="{{pessoa_editing.nome}}" required><br><br>
+     <label for="idade">Idade</label>
+    <input type="number" id="idade" name="idade" value="{{pessoa_editing.idade}}" required><br><br>
+    <label for="cpf">CPF</label>
+    <input type="number" id="cpf" name="cpf" value="{{pessoa_editing.cpf}}" required><br><br>
+    <label for="endereco">Endereço</label>
+    <input type="text" id="endereco" value="{{pessoa_editing.endereco}}" name="endereco" required><br><br>
+    <label for="telefone">Telefone</label>
+    <input type="text" id="telefone" name="telefone" value="{{pessoa_editing.telefone}}" required><br><br>
+    <button>{{#if action}}Editar{{else}}Criar{{/if}}</button>
+</form>
+
+<hr>
+<table>
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Idade</th>
+            <th>CPF</th>
+            <th>Endereço</th>
+            <th>Telefone</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+    {{#each pessoa}}
+        <tr>
+            <td>{{this.nome}}</td>
+            <td>{{this.idade}}</td>
+            <td>{{this.cpf}}</td>
+            <td>{{this.endereco}}</td>
+            <td>{{this.telefone}}</td>
+            <td>
+                <a href="/pessoas/edit/{{this.id}}">Editar</a> |
+                <a href="/pessoas/delete/{{this.id}}">Excluir</a>
+            </td>
+        </tr>
+    {{/each}}
+    </tbody>
+</table>
