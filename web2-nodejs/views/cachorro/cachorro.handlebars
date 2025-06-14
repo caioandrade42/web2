@@ -1,0 +1,50 @@
+<h1>Cachorros</h1>
+
+<form action="/cachorros/{{#if action}}edit/{{cachorro_editing.id}}{{else}}create{{/if}}" method="post">
+    <input type="hidden" name="id" value="{{cachorro_editing.id}}">
+    <label for="nome">Nome</label>
+    <input type="text" id="nome" name="nome" value="{{cachorro_editing.nome}}" required><br><br>
+    <label for="raca">Raça</label>
+    <input type="text" id="raca" name="raca" value="{{cachorro_editing.raca}}" required><br><br>
+    <label for="idade">Idade</label>
+    <input type="number" id="idade" name="idade" value="{{cachorro_editing.idade}}" required><br><br>
+    <label for="peso">Peso</label>
+    <input type="number" step="0.1" id="peso" name="peso" value="{{cachorro_editing.peso}}" required><br><br>
+    <label for="cor">Cor</label>
+    <input type="text" id="cor" name="cor" value="{{cachorro_editing.cor}}" required><br><br>
+    <button>{{#if action}}Editar{{else}}Criar{{/if}}</button>
+</form>
+
+<hr>
+<table>
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Raça</th>
+            <th>Idade</th>
+            <th>Peso</th>
+            <th>Cor</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+    {{#each cachorros}}
+        <tr>
+            <td>{{this.nome}}</td>
+            <td>{{this.raca}}</td>
+            <td>{{this.idade}}</td>
+            <td>{{this.peso}}</td>
+            <td>{{this.cor}}</td>
+            <td style="display:flex; gap:8px;">
+                <form action="/cachorros/edit/{{this.id}}" method="post">
+                    <button>Edit</button>
+                </form>
+                <form action="/cachorros/{{this.id}}" method="post">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button>Del</button>
+                </form>
+            </td>
+        </tr>
+    {{/each}}
+    </tbody>
+</table>

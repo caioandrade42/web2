@@ -1,5 +1,5 @@
-import { Pessoa, Cachorro } from '../module/pessoa_cachorro.js';
-import sequelize from '../database/mysql.js';
+import { Pessoa, Cachorro } from '../../module/pessoa_cachorro.js';
+import sequelize from '../../database/mysql.js';
 
 export async function addPessoa(req, res) {
     try {

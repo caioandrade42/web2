@@ -1,4 +1,4 @@
-import Cachorro from "../module/cachorro.js";
+import Cachorro from "../../module/cachorro.js";
 
 async function createCachorro(req, res) {
     try {

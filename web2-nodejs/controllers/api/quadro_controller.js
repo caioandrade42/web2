@@ -1,5 +1,5 @@
-import {Quadro, Pessoa} from '../module/quadro_pessoa.js';
-import sequelize from '../database/mysql.js';
+import {Quadro, Pessoa} from '../../module/quadro_pessoa.js';
+import sequelize from '../../database/mysql.js';
 import { Op } from 'sequelize';
 
 export async function criarQuadro(req, res) {

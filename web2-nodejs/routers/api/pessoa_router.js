@@ -1,5 +1,5 @@
 import express from 'express';
-import { addPessoa, getAllPessoas, getPessoaById, associarCachorro } from '../controllers/pessoa_controller.js';
+import { addPessoa, getAllPessoas, getPessoaById, associarCachorro } from '../../controllers/api/pessoa_controller.js';
 
 const pessoa_router = express.Router();
 

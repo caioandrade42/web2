@@ -4,12 +4,12 @@
     <input type="hidden" name="id" value="{{pessoa_editing.id}}">
     <label for="nome">Nome</label>
     <input type="text" id="nome" name="nome" value="{{pessoa_editing.nome}}" required><br><br>
-     <label for="idade">Idade</label>
+    <label for="idade">Idade</label>
     <input type="number" id="idade" name="idade" value="{{pessoa_editing.idade}}" required><br><br>
     <label for="cpf">CPF</label>
     <input type="number" id="cpf" name="cpf" value="{{pessoa_editing.cpf}}" required><br><br>
     <label for="endereco">Endereço</label>
-    <input type="text" id="endereco" value="{{pessoa_editing.endereco}}" name="endereco" required><br><br>
+    <input type="text" id="endereco" name="endereco" value="{{pessoa_editing.endereco}}" required><br><br>
     <label for="telefone">Telefone</label>
     <input type="text" id="telefone" name="telefone" value="{{pessoa_editing.telefone}}" required><br><br>
     <button>{{#if action}}Editar{{else}}Criar{{/if}}</button>
@@ -18,14 +18,14 @@
 <hr>
 <table>
     <thead>
-        <tr>
-            <th>Nome</th>
-            <th>Idade</th>
-            <th>CPF</th>
-            <th>Endereço</th>
-            <th>Telefone</th>
-            <th>Ações</th>
-        </tr>
+    <tr>
+        <th>Nome</th>
+        <th>Idade</th>
+        <th>CPF</th>
+        <th>Endereço</th>
+        <th>Telefone</th>
+        <th>Ações</th>
+    </tr>
     </thead>
     <tbody>
     {{#each pessoa}}
@@ -35,9 +35,15 @@
             <td>{{this.cpf}}</td>
             <td>{{this.endereco}}</td>
             <td>{{this.telefone}}</td>
-            <td>
-                <a href="/pessoas/edit/{{this.id}}">Editar</a> |
-                <a href="/pessoas/delete/{{this.id}}">Excluir</a>
+            <td style="display: flex; justify-content: space-evenly;">
+                <form action="/pessoas/buscauma" method="get">
+                    <input type="hidden" name="id" value="{{this.id}}">
+                    <button>Edit</button>
+                </form>
+                <form action="/pessoas/delete" method="post">
+                    <input type="hidden" name="id" value="{{this.id}}">
+                    <button>Del</button>
+                </form>
             </td>
         </tr>
     {{/each}}

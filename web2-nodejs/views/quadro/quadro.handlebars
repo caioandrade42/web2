@@ -1,0 +1,46 @@
+<h1>Quadros</h1>
+
+<form action="/quadros/{{#if action}}atualizar/{{quadro_editing.id}}{{else}}create{{/if}}" method="post">
+    <input type="hidden" name="id" value="{{quadro_editing.id}}">
+    <label for="titulo">Título</label>
+    <input type="text" id="titulo" name="titulo" value="{{quadro_editing.titulo}}" required><br><br>
+    <label for="ano">Ano</label>
+    <input type="number" id="ano" name="ano" value="{{quadro_editing.ano}}" required><br><br>
+    <label for="valor">Valor</label>
+    <input type="number" step="0.01" id="valor" name="valor" value="{{quadro_editing.valor}}" required><br><br>
+    <label for="pessoaId">Pintor (ID)</label>
+    <input type="number" id="pessoaId" name="pessoaId" value="{{quadro_editing.pessoaId}}"><br><br>
+    <button>{{#if action}}Editar{{else}}Criar{{/if}}</button>
+</form>
+
+<hr>
+<table>
+    <thead>
+        <tr>
+            <th>Título</th>
+            <th>Ano</th>
+            <th>Valor</th>
+            <th>Pintor</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+    {{#each quadros}}
+        <tr>
+            <td>{{this.titulo}}</td>
+            <td>{{this.ano}}</td>
+            <td>{{this.valor}}</td>
+            <td>{{#if this.pessoa}}{{this.pessoa.nome}}{{else}}—{{/if}}</td>
+            <td style="display:flex; gap:8px;">
+                <form action="/quadros/atualizar/{{this.id}}" method="post">
+                    <button>Edit</button>
+                </form>
+                <form action="/quadros/{{this.id}}" method="post">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button>Del</button>
+                </form>
+            </td>
+        </tr>
+    {{/each}}
+    </tbody>
+</table>

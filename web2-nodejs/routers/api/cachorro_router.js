@@ -1,6 +1,6 @@
 // routers/cachorro_router.js
 import { Router } from "express";
-import { createCachorro, listCachorros, getCachorro, editCachorro, deleteCachorro } from "../controllers/cachorro_controller.js";
+import { createCachorro, listCachorros, getCachorro, editCachorro, deleteCachorro } from "../../controllers/api/cachorro_controller.js";
 
 const cachorro_router = Router();
 

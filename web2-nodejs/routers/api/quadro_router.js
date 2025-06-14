@@ -6,7 +6,7 @@ import {
     atualizarQuadro,
     excluirQuadro,
     associarQuadroPessoa
-} from '../controllers/quadro_controller.js';
+} from '../../controllers/api/quadro_controller.js';
 
 const quadro_router = express.Router();
 
