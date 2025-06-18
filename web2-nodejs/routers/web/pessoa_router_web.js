@@ -4,6 +4,6 @@ const pessoa_router_web = Router();
 pessoa_router_web.get('/', listPessoas);
 pessoa_router_web.get('/buscauma' , buscaPessoaPorId);
 pessoa_router_web.post('/create', addPessoa);
-pessoa_router_web.put('/edit', editPessoa);
+pessoa_router_web.put('/save', editPessoa);
 pessoa_router_web.delete('/delete', deletePessoa);
 export default pessoa_router_web;

@@ -4,12 +4,15 @@ import { criaRelacao, verificaRelacao} from './pessoa_cachorro_controller.js';
 
 async function addPessoa(req, res) {
   try{
+    console.log('tentando criar pessoa: ' + req.body.nome);
     const pessoa = await Pessoa.create({
     nome: req.body.nome,
     idade: req.body.idade,
     cpf: req.body.cpf,
     endereco: req.body.endereco,
-    telefone: req.body.telefone
+    telefone: req.body.telefone,
+    createdAt: new Date(),
+    updatedAt: null
   });
     if (req.body.cachorroId) {
       const cachorroId = req.body.cachorroId;
@@ -25,13 +28,13 @@ async function addPessoa(req, res) {
     res.render('alerts', {
       title: 'Cadastro de Pessoa',
       message: 'Pessoa cadastrada com sucesso!',
-      redirect: '/pessoas/list'})
+      redirect: '/pessoa/pessoa'})
     }
   }catch (error) {
     res.render('alerts', {
       title: 'Erro',
       message: 'Erro ao cadastrar pessoa!',
-      redirect: '/'
+      redirect: '/pessoa/pessoa'
     });
     console.error('Error creating person:', error);
   }
@@ -39,14 +42,14 @@ async function addPessoa(req, res) {
 
 async function listPessoas(req, res) {
   try {
-    const pessoas = await Pessoa.findAll();
+    const pessoas = await Pessoa.findAll({ raw: true });
     res.render('pessoa/pessoa', { pessoas });
   } catch (error) {
     console.error('Error listing people:', error);
     res.render('alerts', {
       title: 'Erro',
       message: 'Erro ao listar pessoas!',
-      redirect: '/pessoas'
+      redirect: '/pessoa/pessoa'
     });
   }
 }

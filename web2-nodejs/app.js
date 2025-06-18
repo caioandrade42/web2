@@ -20,6 +20,7 @@ const hbs = create({
     partialsDir: './views/partials/'
 });
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
