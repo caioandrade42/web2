@@ -4,7 +4,7 @@ const List = (props) => {
   return(
     <ul>
       {
-        props.itens.map((v,i)=>{
+        props.items.map((v,i)=>{
           return <li className={styles.li}>{v}</li>;
         })
       }
